@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>FORM</h3>
+    <form action="backend.php">
+      <label for="name">Name:</label>
+      <div><input type="text" name="myName" id="name" /></div>
+      <br />
+
+      <label for="role">Role:</label>
+      <div><input type="text" name="myRole" id="role" /></div>
+      <br />
+
+      <label for="email">Email:</label>
+      <div><input type="email" name="myEmail" id="email" /></div>
+      <br />
+
+      <label for="date">Date:</label>
+      <div><input type="date" name="myDate" id="date" /></div>
+      <br />
+
+      <label for="bonus">Bonus:</label>
+      <div><input type="number" name="myBonus" id="bonus" /></div>
+      <br />
+
+      <label for="eligible">Are you eligible:</label>
+      <div>
+        <input type="checkbox" name="myEligibility" id="eligible" checked />
+      </div>
+      <br />
+
+      <label for="gender">Gender:</label>
+      <div>
+        male<input type="radio" name="myGender" id="gender" /> female<input
+          type="radio"
+          name="myGender"
+          id="gender"
+        />
+        other<input type="radio" name="myGender" id="gender" />
+      </div>
+      <br />
+
+      <label for="textarea">write about yourself:</label>
+      <div>
+        <textarea name="myText" cols="60" rows="10" id="textarea"></textarea>
+      </div>
+      <br />
+
+      <div>
+        <label for="cars">Cars:</label> <br />
+        <select name="myCar" id="cars">
+          <option value="ind">Indica</option>
+          <option value="sft">swift</option>
+          <option value="vtr">Vitara Brezza</option>
+          <option value="inv">innova</option>
+        </select>
+      </div>
+      <br />
+
+      <div>
+        <input type="submit" value="submit!" />
+        <input type="reset" value="reset!" />
+      </div>
+    </form>
+  </body>
+</html>
