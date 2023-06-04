@@ -1,83 +1,76 @@
-document.getElementById('personalForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-  
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var phone = document.getElementById('phone').value;
-    var skills = document.getElementById('skills').value;
-  
-    localStorage.setItem('name', name);
-    localStorage.setItem('email', email);
-    localStorage.setItem('phone', phone);
-    localStorage.setItem('skills', skills);
-  
-    document.getElementById('downloadButton').disabled = false;
-  
-    alert('Personal information saved!');
-  });
-  
-  document.getElementById('professionalForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-  
-    var experience = document.getElementById('experience').value;
-    var education = document.getElementById('education').value;
-  
-    var name = localStorage.getItem('name');
-    var email = localStorage.getItem('email');
-    var phone = localStorage.getItem('phone');
-    var skills = localStorage.getItem('skills');
-  
-    var result = document.getElementById('result');
-    result.innerHTML = `
-      <h2>Generated Resume</h2>
-      <div class="personal-info">
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <h3>Skills</h3>
-        <p>${skills}</p>
-      </div>
-      <div class="professional-info">
-        <h3>Experience</h3>
-        <p>${experience}</p>
-        <h3>Education</h3>
-        <p>${education}</p>
-      </div>
-    `;
-  
-    document.getElementById('downloadButton').disabled = false;
-  });
-  
-  document.getElementById('downloadButton').addEventListener('click', function() {
-    var result = document.getElementById('result').innerHTML;
-    var htmlContent = `
-      <html>
-      <head>
-        <title>Resume</title>
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-          }
-          
-          .personal-info {
-            margin-bottom: 20px;
-          }
-          
-          .personal-info p {
-            margin: 0;
-          }
-        </style>
-      </head>
-      <body>
-        ${result}
-      </body>
-      </html>
-    `;
-  
-    var filename = 'resume.pdf';
-  
-    html2pdf().set({ filename: filename }).from(htmlContent).save();
-  });
-  
+/*==================== SHOW MENU ====================*/
+const showMenu = (toggleId, navId) =>{
+    const toggle = document.getElementById(toggleId),
+    nav = document.getElementById(navId)
+    
+    // Validate that variables exist
+    if(toggle && nav){
+        toggle.addEventListener('click', ()=>{
+            // We add the show-menu class to the div tag with the nav__menu class
+            nav.classList.toggle('show-menu')
+        })
+    }
+}
+showMenu('nav-toggle','nav-menu')
+
+/*==================== REMOVE MENU MOBILE ====================*/
+const navLink = document.querySelectorAll('.nav__link')
+
+function linkAction(){
+    const navMenu = document.getElementById('nav-menu')
+    // When we click on each nav__link, we remove the show-menu class
+    navMenu.classList.remove('show-menu')
+}
+navLink.forEach(n => n.addEventListener('click', linkAction))
+
+/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+const sections = document.querySelectorAll('section[id]')
+
+function scrollActive(){
+    const scrollY = window.pageYOffset
+
+    sections.forEach(current =>{
+        const sectionHeight = current.offsetHeight
+        const sectionTop = current.offsetTop - 50;
+        sectionId = current.getAttribute('id')
+
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
+        }else{
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+        }
+    })
+}
+window.addEventListener('scroll', scrollActive)
+
+/*==================== SHOW SCROLL TOP ====================*/ 
+
+
+/*==================== DARK LIGHT THEME ====================*/ 
+
+
+/*==================== REDUCE THE SIZE AND PRINT ON AN A4 SHEET ====================*/ 
+
+
+/*==================== REMOVE THE SIZE WHEN THE CV IS DOWNLOADED ====================*/ 
+
+
+/*==================== GENERATE PDF ====================*/ 
+// PDF generated area
+
+
+// Html2pdf options
+
+
+// Function to call areaCv and Html2Pdf options 
+
+
+// When the button is clicked, it executes the three functions
+
+    // 1. The class .scale-cv is added to the body, where it reduces the size of the elements
+
+
+    // 2. The PDF is generated
+
+
+    // 3. The .scale-cv class is removed from the body after 5 seconds to return to normal size.

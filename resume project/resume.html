@@ -1,38 +1,211 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Resume Builder</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--========== BOX ICONS ==========-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Responsive resume cv</title>
   </head>
   <body>
-    <div class="container">
-      <div class="sidebar">
-        <h1>Resume Builder</h1>
-        <form id="personalForm">
-          <label for="name">Name:</label>
-          <input type="text" id="name" required />
-          <label for="email">Email:</label>
-          <input type="email" id="email" required />
-          <label for="phone">Phone:</label>
-          <input type="tel" id="phone" required />
-          <label for="skills">Skills:</label>
-          <textarea id="skills" required></textarea>
-          <button type="submit">Save Personal Info</button>
-        </form>
-      </div>
-      <div class="main">
-        <form id="professionalForm">
-          <label for="experience">Experience:</label>
-          <textarea id="experience" required></textarea>
-          <label for="education">Education:</label>
-          <textarea id="education" required></textarea>
-          <button type="submit">Generate Resume</button>
-        </form>
-        <div id="result"></div>
-        <button id="downloadButton" disabled>Download Resume</button>
-      </div>
-    </div>
+    <!--========== HEADER ==========-->
+    <header class="l-header" id="header">
+      <nav class="nav bd-container">
+        <a href="#" class="nav__logo">Hanzala</a>
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#home" class="nav__link active-link">
+                <i class="bx bx-home nav__icon"></i>Home
+              </a>
+            </li>
 
+            <li class="nav__item">
+              <a href="#profile" class="nav__link">
+                <i class="bx bx-user nav__icon"></i>Profile
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#education" class="nav__link">
+                <i class="bx bx-book nav__icon"></i>Education
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#skills" class="nav__link">
+                <i class="bx bx-receipt nav__icon"></i>Skills
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#experience" class="nav__link">
+                <i class="bx bx-briefcase-alt nav__icon"></i>Experience
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#certificates" class="nav__link">
+                <i class="bx bx-award nav__icon"></i>Certificates
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#references" class="nav__link">
+                <i class="bx bx-link-external nav__icon"></i>References
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="bx bx-grid-alt"></i>
+        </div>
+      </nav>
+    </header>
+
+    <main class="l-main bd-container">
+      <!-- All elements within this div, is generated in PDF -->
+      <div class="resume" id="area-cv">
+        <div class="resume__left">
+          <!--========== HOME ==========-->
+          <section class="home" id="home">
+            <div class="home__container section bd-grid">
+              <div class="home__data bd-grid">
+                <img src="hacker.jpg" alt="" class="home__img">
+                <h1 class="home__title">HANZALA <b>AHMED</b></h1>
+                <h3 class="home__profession">Web Developer</h2>
+
+                <!-- Button to generate and download the pdf. Available for desktop. -->
+                <div>
+                  <a download="" href="resume.pdf" class="home__button-movil">Download</a>
+                </div>
+              </div>
+              <div class="home__address bd-grid">
+
+                <span class="home__information">
+                  <i class="bx bx-map home__icon"></i> Chaitanya Nagar, Nanded - India
+                </span>
+
+                <span class="home__information">
+                  <i class="bx bx-envelope home__icon"></i> user@email.com
+                </span>
+
+                <span class="home__information">
+                  <i class="bx bx-phone home__icon"></i> 999-888-777 
+                </span>
+
+              </div>
+            </div>
+            <!-- Theme change button -->
+
+          </section>
+
+          <!--========== SOCIAL ==========-->
+          <section class="social section">
+            <h2 class="section-title">SOCIAL</h2>
+            <div class="social__container bd-grid">
+              <a href="https://linkedin.com/" target="_blank" class="social__link">
+                <i class="bx bxl-linkedin-square social__icon"></i>@Hanzala
+              </a>
+              
+              <a href="https://www.facebook.com/" target="_blank" class="social__link">
+                <i class="bx bxl-facebook social__icon"></i>@Hanzala
+              </a>
+
+            </div>
+          </section>
+
+          <!--========== PROFILE ==========-->
+          <section class="profile section" id="profile">
+            <h2 class="section-title">Profile</h2>
+            <p class="profile__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur accusantium consequuntur mollitia distinctio in quidem, quo aut ipsam eveniet, quam corrupti possimus libero soluta voluptatum reprehenderit dignissimos. Sapiente, quaerat iste.</p>
+          </section>
+
+          <!--========== EDUCATION ==========-->
+          <section class="education section" id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="education__container bd-grid">
+
+              <div class="education__content">
+                <div class="education__time">
+                  <span class="education__rounder"></span>
+                  <span class="education__line"></span>
+                </div>
+                <div class="education__data bd-grid">
+                  <h3 class="education__title">Bachelor of technology</h3>
+                  <span class="education__studies">University of studies</span>
+                  <span class="education__year">2021 - 2025</span>
+                </div>
+              </div>
+
+              <div class="education__content">
+                <div class="education__time">
+                  <span class="education__rounder"></span>
+                  <span class="education__line"></span>
+                </div>
+                 <div class="education__data bd-grid">
+                   <h3 class="education__title">HSC 11th & 12th</h3>
+                   <span class="education__studies">Al-Rizwan</span>
+                   <span class="education__year">2019 - 2021</span>
+                 </div>
+               </div>
+          
+
+                <div class="education__content">
+                  <div class="education__time">
+                    <span class="education__rounder"></span>
+                    <span class="education__line"></span>  
+                  </div>
+                  <div class="education__data bd-grid">
+                    <h3 class="education__title">ssc 1st - 10th</h3>
+                    <span class="education__studies">Al-Irfan</span>
+                    <span class="education__year">2009 - 2021</span>
+                  </div>
+                </div>
+
+              
+            </div>
+          </section>
+
+          <!--========== SKILLS  ==========-->
+          <section class="skills section" id="skills">
+          
+          </section>
+        </div>
+
+        <div class="resume__right">
+          <!--========== EXPERIENCE ==========-->
+          <section class="experience section" id="experience"></section>
+
+          <!--========== CERTIFICATES ==========-->
+          <section class="certificate section" id="certificates"></section>
+
+          <!--========== REFERENCES ==========-->
+          <section class="references section" id="references"></section>
+
+          <!--========== LANGUAGES ==========-->
+          <section class="languages section"></section>
+
+          <!--========== INTERESTS ==========-->
+          <section class="interests section"></section>
+        </div>
+      </div>
+    </main>
+
+    <!--========== SCROLL TOP ==========-->
+
+    <!--========== HTML2PDF ==========-->
+    <script src="assets/js/html2pdf.bundle.min.js"></script>
+
+    <!--========== MAIN JS ==========-->
     <script src="main.js"></script>
   </body>
 </html>
