@@ -1,4 +1,6 @@
 body{
-    background-color: black;
-    color: aliceblue;
+    background-color: rgb(0, 0, 0);
+    color: rgb(0, 148, 20);
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
 }
