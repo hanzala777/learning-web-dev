@@ -3,7 +3,7 @@ body{
     font-family: 'Courier New', Courier, monospace;
 }
 h1{
-    padding: 5%;
+    padding: 2%;
     text-align: center;
     color: rgb(0, 148, 20);
     margin: auto;
@@ -11,9 +11,24 @@ h1{
 h2{
     padding:3%;
     margin: auto;
-    color: rgb(53, 230, 77);
 }
 a,p{
     padding: 0.5%;
     color: rgb(0, 255, 238);
+    padding: 5%;
+}
+ul,ol{
+    color: rgb(0, 255, 238);
+    margin-left: 1%;
+    padding: 1%;
+}
+.h2haibhai{
+    list-style-type: disc;
+    padding: 1%;
+    list-style-position: outside;
+    color: rgb(53, 230, 77);
+}
+img{
+    margin-left: 500px;
+    margin-top: -400px;
 }
