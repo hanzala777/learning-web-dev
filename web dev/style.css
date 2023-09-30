@@ -1,6 +1,19 @@
 body{
     background-color: rgb(0, 0, 0);
-    color: rgb(0, 148, 20);
     font-family: 'Courier New', Courier, monospace;
-    font-style: italic;
+}
+h1{
+    padding: 5%;
+    text-align: center;
+    color: rgb(0, 148, 20);
+    margin: auto;
+}
+h2{
+    padding:3%;
+    margin: auto;
+    color: rgb(53, 230, 77);
+}
+a,p{
+    padding: 0.5%;
+    color: rgb(0, 255, 238);
 }
