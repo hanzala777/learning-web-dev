@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+.box{
+    background-color: green;
+}
+.box1{
+    color: yellow;
+    padding: 10px;
+    margin: 25px;
+    border: 2px solid blue;
+    height: 100px;
+    box-sizing: border-box;
+}
+.box2{
+    color: yellowgreen;
+    padding: 10px;
+    margin: 25px;
+    border: 2px solid blue;
+    height: 100px;
+    box-sizing: border-box;
+}
+.fonts > p{
+    font-family: 'Baloo Bhai 2', sans-serif;
+    /* font-style: italic; */
+    font-weight: 500;
+    font-size: 30px;
+}
+.fonts > h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
