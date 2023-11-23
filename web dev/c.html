@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Hide the radio buttons */
+    input[type="radio"] {
+      display: none;
+    }
+
+    /* Style the labels with default background color */
+    label {
+      display: block;
+      padding: 10px;
+      margin: 5px;
+      background-color: lightgray;
+      cursor: pointer;
+    }
+
+    /* Change background color on :checked */
+    input[type="radio"]:checked + label {
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Form Component -->
+  <form>
+
+    <!-- Div 1 -->
+    <div>
+      <input type="radio" id="radio1" name="radiogroup">
+      <label for="radio1">Option 1</label>
+    </div>
+
+    <!-- Div 2 -->
+    <div>
+      <input type="radio" id="radio2" name="radiogroup">
+      <label for="radio2">Option 2</label>
+    </div>
+
+    <!-- Div 3 -->
+    <div>
+      <input type="radio" id="radio3" name="radiogroup">
+      <label for="radio3">Option 3</label>
+    </div>
+
+  </form>
+
+</body>
+</html>
