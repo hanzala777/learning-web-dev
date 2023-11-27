@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS animatiom</title>
+    <style>
+        .container{
+            background-color: purple;
+            height: 80vh;
+            width: 60vw;
+        }
+        .box{
+            height: 45px;
+            width: 60px;
+            animation-name: hanzy;
+            animation-duration: 1s;
+            animation-iteration-count: 1;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;
+        }
+        @keyframes hanzy{
+            from{
+                background-color: palevioletred;
+            }
+            to{
+                background-color: aquamarine;
+                transform: translateX(40vw) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+</body>
+</html>
