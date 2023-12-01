@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starting JavaScript</title>
+</head>
+<body>
+    <h2>1) In this, we will be printing the sum from 1 till 100</h2>
+    <h2>2) Writing JavaScript for fibonacci series</h2>
+    <h2>3) Now, for Patterns</h2>
+    <script>
+        // <--------------- SUM FROM 1 TO 100 --------------->
+        let sum = 0;
+        for(let i = 1; i <= 100; i++){
+            sum += i;
+        }
+        console.log(sum);
+
+        // <--------------- FIBONACCI SERIES --------------->
+        const number = parseInt(prompt('Enter the number of terms: '));
+        let n1 = 0, n2 = 1, nextTerm;
+
+        
+        for (let i = 1; i <= number; i++) {
+            console.log(n1);
+            nextTerm = n1 + n2;
+            n1 = n2;
+            n2 = nextTerm;
+        }
+        
+        // <--------------- PATTERN --------------->
+        console.log('Pattern:');
+        let a = '';
+        for(let i = 0; i <= 4; i++){
+            for(let j = 0; j < i; j++){
+                a += '*'; 
+            }
+            a += '\n';
+        }
+        console.log(a);
+
+
+    </script>
+</body>
+</html>
