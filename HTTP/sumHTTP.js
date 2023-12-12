@@ -10,6 +10,10 @@ function calculateSum (n){
     return sum;
 }
 
+function welcome (name){
+    return `Welcome ${name} to my page`; 
+}
+
 function handleFirstRequest(req, res){
     var counter = req.query.counter;
     var sum = calculateSum(counter);
@@ -18,7 +22,15 @@ function handleFirstRequest(req, res){
     res.send(ans);
 }
 
+function handleSecondRequest(req, res){
+    var name = req.query.name;
+    var ans = welcome(name);
+    console.log(ans);
+    res.send(ans);
+}
+
 app.get('', handleFirstRequest);
+app.get('/welcome', handleSecondRequest);
 
 function started() {
     console.log(`Example app listening on port ${port}`);
