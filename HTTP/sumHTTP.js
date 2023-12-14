@@ -28,8 +28,20 @@ function handleFirstRequest(req, res){
     var ans = "The sum is " + sum;
     res.send(ans);
 }
+function welcome (name, age){
+    return `Hello ${name} your age is ${age}`;
+}
 
-app.post('', handleFirstRequest);
+function handleSecondRequest(req, res){
+    var name = req.body.name;   // for body params
+    var age = req.body.age;   // for body params
+    var ans = welcome(name, age);
+    console.log(name, age);
+    res.send(ans);
+}
+
+app.post('/sum', handleFirstRequest);
+app.post('/welcome', handleSecondRequest);
 
 function started() {
     console.log(`Example app listening on port ${port}`);
