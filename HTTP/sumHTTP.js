@@ -18,15 +18,29 @@ function calculateSum (n){
     return sum;
 }
 
+function calculateMul (n){
+    var mul = 1;
+    for(let i = 1; i <= n; i++){
+        mul *= i;
+    }
+    return mul;
+}
+
 function handleFirstRequest(req, res){
     // console.log(req.body);
     var counter = req.body.counter;   // for body params
     // var counter = req.headers.counter;   // for header params
     // var counter = req.query.counter;   // for query   params
-    var sum = calculateSum(counter);
-    console.log(sum);
-    var ans = "The sum is " + sum;
-    res.send(ans);
+    var sumAns = calculateSum(counter);
+    var mulAns = calculateMul(counter);
+    console.log(sumAns);
+    console.log(mulAns);
+    var objAns = {
+        sum:sumAns,
+        mul:mulAns,
+    };
+    // var ans = "The sum is " + sum;
+    res.send(objAns);
 }
 function welcome (name, age){
     return `Hello ${name} your age is ${age}`;
