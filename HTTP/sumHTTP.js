@@ -28,9 +28,9 @@ function calculateMul (n){
 
 function handleFirstRequest(req, res){
     // console.log(req.body);
-    var counter = req.body.counter;   // for body params
+    // var counter = req.body.counter;   // for body params
     // var counter = req.headers.counter;   // for header params
-    // var counter = req.query.counter;   // for query   params
+    var counter = req.query.counter;   // for query   params
     var sumAns = calculateSum(counter);
     var mulAns = calculateMul(counter);
     console.log(sumAns);
@@ -52,9 +52,10 @@ function handleSecondRequest(req, res){
     var ans = welcome(name, age);
     console.log(name, age);
     res.send(ans);
+    // res.sendFile(__dirname + "/index.html");
 }
 
-app.post('/sum', handleFirstRequest);
+app.get('/sum', handleFirstRequest);
 app.post('/welcome', handleSecondRequest);
 
 function started() {
