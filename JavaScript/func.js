@@ -6,10 +6,12 @@ function sum1ToN (n){
     }
     return a;
 }
-const ans = sum1ToN(10);
-console.log(ans);
+let n = 100;
+const ans = sum1ToN(n);
+console.log(`sum from 1 to ${n} : ${ans}`);
 
 // <--------------- ARITHEMATIC OPERATIONS --------------->
+console.log('');
 function sum (num1, num2){
     return num1 + num2;
 }
@@ -32,7 +34,6 @@ function arithematicOperation (num1, num2, operation){
 
 let num1 = 5;
 let num2 = 2;
-console.log(num1)
 
 var ans1 = arithematicOperation(num1, num2, sum);
 console.log("Sum : " + ans1); 
