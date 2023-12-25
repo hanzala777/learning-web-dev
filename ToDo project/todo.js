@@ -16,7 +16,7 @@ function findIndex(arr, id){
     return -1;
 }
 
-function removeIndex(arr, index){
+function removeAtIndex(arr, index){
     let newArray = [];
     for(let i = 0; i < arr.length; i++){
         if (i !== index) newArray.push(arr[i]);
@@ -44,10 +44,10 @@ app.post('/todos', (req, res) => {
         title: req.body.title,
         description: req.body.description
     };
+    ctr += 1;
     todos.push(newTodo);
     res.status(201).json(newTodo);
 });
-ctr += 1;
 
 app.put('/todos/:id', (req, res) =>{
     const todoIndex = findIndex(todos, parseInt(req.params.id));
@@ -57,6 +57,16 @@ app.put('/todos/:id', (req, res) =>{
         todos[todoIndex].title = req.body.title;
         todos[todoIndex].description = req.body.description;
         req.json(todos[todoIndex]);
+    }
+});
+
+app.delete('/todos', (req, res) => {
+    const todoIndex = findIndex(todos, parseInt(req.body.id));
+    if(todoIndex === -1){
+        res.status(404).send();
+    } else {
+        todos = removeAtIndex(todos, todoIndex);
+        res.status(201).send();
     }
 });
 
