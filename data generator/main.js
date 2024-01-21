@@ -7,6 +7,8 @@ let conn = await mongoose.connect("mongodb://localhost:27017/course");
 const app = express();
 const port = 3000;
 
+app.set('view engine', 'ejs');
+
 let name = ["Hanzala", "Anshal", "Umair", "Daniyal"];
 let lang = ["Python", "js", "c++", "java"];
 let tf = [true, false]
@@ -16,7 +18,7 @@ let ran = (arr)=>{
     return arr[a];
 }
 
-app.get("/", async (req, res) => {
+app.get("/generate", async (req, res) => {
   await Course.deleteMany({});
   for(let i = 0; i < 10; i++){
     const course = new Course({
@@ -27,7 +29,7 @@ app.get("/", async (req, res) => {
       });
       course.save();
   }
-  res.send("Hello World!");
+  res.render('index', {foo: 'FOO'});
 });
 
 app.listen(port, () => {
