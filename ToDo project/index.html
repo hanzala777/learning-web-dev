@@ -1,0 +1,92 @@
+<head>
+    <title>
+        TODO app
+    </title>
+</head>
+<script>
+    function parsedResponse(data) {
+        console.log(data);
+
+        var parentElement = document.getElementById("dataDisplay");
+        var childElement = document.createElement("div");
+
+        var grandChildElement1 = document.createElement("span");
+        grandChildElement1.innerHTML = data.title;
+
+        var grandChildElement2 = document.createElement("span");
+        grandChildElement2.innerHTML = data.description;
+        
+        var grandChildElement3 = document.createElement("button");
+        grandChildElement3.innerHTML = "delete";
+
+        childElement.appendChild(grandChildElement1);
+        childElement.appendChild(grandChildElement2);
+        childElement.appendChild(grandChildElement3);
+
+        parentElement.appendChild(childElement);
+    }
+
+    function postTodosCallback(resp) {
+        resp.json().then(parsedResponse);
+    }
+
+    function sendTodo() {
+        var title = document.getElementById("title").value;
+        var description = document.getElementById("description").value;
+        fetch("http://localhost:3000/todos", {
+            method: "POST",
+            body: JSON.stringify({
+                title: title,
+                description: description
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(postTodosCallback)
+    }
+    
+
+    function todosCallback(data) {
+        var parentElement = document.getElementById("dataDisplay");
+        for(let i = 0; i < data.length; i++){
+            var childElement = document.createElement("div");
+
+            var grandChildElement1 = document.createElement("span");
+            grandChildElement1.innerHTML = data[i].title;
+
+            var grandChildElement2 = document.createElement("span");
+            grandChildElement2.innerHTML = data[i].description;
+            
+            var grandChildElement3 = document.createElement("button");
+            grandChildElement3.innerHTML = "delete";
+
+            childElement.appendChild(grandChildElement1);
+            childElement.appendChild(grandChildElement2);
+            childElement.appendChild(grandChildElement3);
+
+            parentElement.appendChild(childElement);
+        } 
+    }
+
+    function getTodosCallback(resp) {
+        resp.json().then(todosCallback);
+    }
+
+    function getTodo() {
+        fetch("http://localhost:3000/todos",{
+            method: "GET",
+        }).then(getTodosCallback)
+    }
+    getTodo();
+    
+</script>
+<body>
+    Todo title
+    <input type="text" id="title"></input>
+    <br><br>
+    Todo description
+    <input type="text" id="description"></input>
+    <br><br>
+    <button onclick="sendTodo()">send todo</button>
+    <div id="dataDisplay"></div>
+</body>
