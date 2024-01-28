@@ -6,7 +6,6 @@
 <script>
     function parsedResponse(data) {
         console.log(data);
-
         var parentElement = document.getElementById("dataDisplay");
         var childElement = document.createElement("div");
 
@@ -18,12 +17,27 @@
         
         var grandChildElement3 = document.createElement("button");
         grandChildElement3.innerHTML = "delete";
+        grandChildElement3.setAttribute("onclick","deleteTodo(" + data.id +")");
 
+        childElement.append(document.createElement("br"));
         childElement.appendChild(grandChildElement1);
+        childElement.append(document.createElement("br"));
         childElement.appendChild(grandChildElement2);
+        childElement.append(document.createElement("br"));
         childElement.appendChild(grandChildElement3);
+        childElement.append(document.createElement("br"));
+        childElement.append(document.createElement("br"));
+
+        childElement.setAttribute("id","deleter" + data.id);
 
         parentElement.appendChild(childElement);
+
+        // clearing the input fields every time we press send button
+        var titleInput = document.getElementById("title");
+        var descriptionInput = document.getElementById("description");
+
+        titleInput.value = "";
+        descriptionInput.value = "";
     }
 
     function postTodosCallback(resp) {
@@ -45,6 +59,7 @@
         }).then(postTodosCallback)
     }
     
+    
 
     function todosCallback(data) {
         var parentElement = document.getElementById("dataDisplay");
@@ -59,10 +74,18 @@
             
             var grandChildElement3 = document.createElement("button");
             grandChildElement3.innerHTML = "delete";
+            grandChildElement3.setAttribute("onclick","deleteTodo(" + data[i].id +")");
 
+            childElement.append(document.createElement("br"));
             childElement.appendChild(grandChildElement1);
+            childElement.append(document.createElement("br"));
             childElement.appendChild(grandChildElement2);
+            childElement.append(document.createElement("br"));
             childElement.appendChild(grandChildElement3);
+            childElement.append(document.createElement("br"));
+            childElement.append(document.createElement("br"));
+
+            childElement.setAttribute("id","deleter" + data[i].id);
 
             parentElement.appendChild(childElement);
         } 
@@ -79,6 +102,30 @@
     }
     getTodo();
     
+
+    function deleteTodosCallback(id) {
+        console.log("Delete Done!");
+        // delete the right todo from the list
+        // you will need to give each todo an id, and that should be enough to remove it 
+        var deletedElement = document.getElementById("deleter" + id);
+        if (deletedElement) {
+            deletedElement.remove();
+        }   
+    }
+
+    function deleteTodo(id) {
+        console.log(id);
+        fetch("http://localhost:3000/todos/" + id,{
+            method: "DELETE",
+            headers: {
+                "content-Type": "application/json"
+            }
+        }).then(function(resp) {
+            if (resp.ok) {
+                deleteTodosCallback(id);
+            }
+        });
+    }
 </script>
 <body>
     Todo title
