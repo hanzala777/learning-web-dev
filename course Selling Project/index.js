@@ -98,8 +98,8 @@ app.post('/users/courses/:courseId', userAuthentication, (req, res) => {
     }
 });
 
-app.get('/users/purchasedCourses', (req, res) => {
-    const purchasedCourses = COURSES.filter(c => req.user.purchasedCourses.include(c.id));
+app.get('/users/purchasedCourses', userAuthentication, (req, res) => {
+    const purchasedCourses = COURSES.filter(c => req.user.purchasedCourses.includes(c.id));
     // if (!req.user) {
     //     console.error('Error: req.user is undefined');
     //     return res.status(500).json({ error: 'Internal server error' });
