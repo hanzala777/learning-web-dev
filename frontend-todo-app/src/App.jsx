@@ -15,8 +15,7 @@ function App() {
       description: "Go and eat from your plate",
       id: 2
     })
-  },2000);
-
+  },1000);
 
   return (
     <>
