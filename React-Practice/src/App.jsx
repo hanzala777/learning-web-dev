@@ -1,42 +1,50 @@
 // import './App.css' 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+function useTodos() {
+  const [todos, setTodos] = useState([]);
+  
+  useEffect(() => {
+    fetch("http://localhost:3000/todos",{
+      method: "GET",
+    }).then((res) => {
+      res.json().then((data) => {
+        console.log(data);
+        setTodos(data);
+      })
+    });
+
+    setInterval(()=>{
+      fetch("http://localhost:3000/todos",{
+        method: "GET",
+      }).then((res) => {
+        res.json().then((data) => {
+          console.log(data);
+          setTodos(data);
+        })
+      });
+    },1000);
+  }, [])
+
+  return todos;
+}
 
 function App() {
-  const [todo, setTodo] = useState({
-    title: "Gym",
-    description: "Go to gym from 5-7",
-    id: 1
-  });
 
-  setInterval(() => {
-    setTodo({
-      title: "Eat",
-      description: "Go and eat from your plate",
-      id: 2
-    })
-  },1000);
+  const todos = useTodos();
 
   return (
-    <>
-      <h1>ToDo Application</h1>
-      <PersonName></PersonName>
-      <TumHo fname={"Hanzala"} lname={todo.id}></TumHo>
-      <h4>
-        {todo.id} <span>) &nbsp;</span>
-        {todo.title} <span>:- &nbsp;</span>
-        {todo.description}
-      </h4>
-    </>
+    <div className='cont'>
+      {todos.map(todo => {
+        return <div>
+          {todo.title} &nbsp;
+          {todo.description} &nbsp;
+          <button>Delete</button> <br /><br />
+        </div>
+      })}
+    </div>
   )
-}
-
-function PersonName(){
-  return <div><h2>Hanzala Ahmed</h2></div>
-}
-
-function TumHo(props){
-  return <div><h2>{props.fname} {props.lname}</h2></div>
 }
 
 export default App
