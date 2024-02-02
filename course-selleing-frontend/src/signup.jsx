@@ -21,6 +21,12 @@ function Signup(){
             <TextField onChange={(e) => {setUsername(e.target.value)}} label="Username" variant="outlined" style={{margin:10}}/> <br />
             <TextField onChange={(e) => {setPassword(e.target.value)}} label="Password" type={'password'} variant="outlined" style={{margin:10, marginTop:0}}/> <br />
             <Button variant="contained" style={{margin:10, marginTop:0}} onClick={() => {
+                function callback2(data) {
+                    localStorage.setItem("token", data.token)
+                }
+                function callback(res) {
+                    res.json().then(callback2);
+                }
                 fetch("http://localhost:3000/admin/signup",{
                     method:"POST",
                     body: JSON.stringify({
@@ -30,7 +36,7 @@ function Signup(){
                     headers: {
                         "content-type": "application/json"
                     }
-                })
+                }).then(callback)
             }}>Sign up</Button>
             </div>
         </Card>

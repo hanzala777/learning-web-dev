@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Java",
+        "description": "a beginner friendly java course at a very reasonable price",
+        "image": "",
+        "published": true,
+        "id": 1
+    },
+    {
+        "title": "C",
+        "description": "a beginner friendly C course at a very reasonable price",
+        "image": "",
+        "published": true,
+        "id": 2
+    }
+]

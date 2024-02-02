@@ -31,8 +31,7 @@ function Addcourse(){
                     }),
                     headers: {
                         "content-type": "application/json",
-                        "username": username,
-                        "password": password
+                        "Authorization": "Bearer "+ localStorage.getItem("token")
                     }
                 })
             }}>Add course</Button>

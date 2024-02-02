@@ -2,8 +2,10 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import {Card, Typography} from '@mui/material';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Signin(){
+    const navigate = useNavigate();
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     return <div>
@@ -21,6 +23,12 @@ function Signin(){
             <TextField label="Username" variant="outlined" style={{margin:10}} onChange={(e) => {setUsername(e.target.value)}}/> <br />
             <TextField label="Password" type={'password'} variant="outlined" style={{margin:10, marginTop:0}} onChange={(e) => {setPassword(e.target.value)}}/> <br />
             <Button variant="contained" style={{margin:10, marginTop:0}} onClick={() => {
+                function callback2(data) {
+                    localStorage.setItem("token", data.token)
+                }
+                function callback(res) {
+                    res.json().then(callback2);
+                }
                 fetch("http://localhost:3000/admin/login",{
                     method:"POST",
                     headers: {
@@ -28,11 +36,11 @@ function Signin(){
                         "username": username,
                         "password": password
                     }
-                })
+                }).then(callback)
             }}>sign in</Button>
             </div>
             <Button onClick={() => {
-                window.location = '/add'
+                navigate("../add");
             }}>Add course</Button>
         </Card>
         </center>

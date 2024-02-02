@@ -14,8 +14,8 @@ function App() {
       height:'100vh',
       backgroundColor: '#eeeeee'
     }}>
-      <Appbar></Appbar>
       <Router>
+      <Appbar></Appbar>
         <Routes>
           <Route path="/add" element={<Addcourse/>} />
           <Route path="/signup" element={<Signup/>} />
