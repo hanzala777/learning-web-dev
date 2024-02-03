@@ -1,9 +1,59 @@
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 function Appbar() {
     const navigate = useNavigate();
+    const [username, setUsername] = useState(null);
+
+
+    useEffect(() => {
+        fetch('http://localhost:3000/admin/me', {
+            method: 'GET',
+            headers: {
+                "Authorization": "Bearer "+ localStorage.getItem("token")
+            }
+        }).then((res) => {
+            res.json().then((data) => {
+                if(data.username) {
+                    setUsername(data.username)
+                }
+                console.log(data)
+            })
+        })
+    },[]);
+
+    if(username) {
+        return <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            padding: '4px'
+        }}>
+            <div>
+                <Typography variant={'h5'}>CourseEra</Typography>
+            </div>
+            <div style={{
+                display:'flex'
+            }}>
+                <center style={{
+                    margin: 10,
+                    fontSize: 15,
+                    borderRadius: '50px',
+                    minWidth: 50,
+                    minHeight: 20,
+                    backgroundColor:"lightblue",
+                    color:'aliceblue',
+                    padding:5
+                }}>{username}</center>
+                <Button onClick={() => {
+                    localStorage.setItem("token", null);
+                    alert("logged out!")
+                }}>Logout</Button>
+            </div>
+        </div>
+    }
+
     return <div style={{
         display: 'flex',
         justifyContent: 'space-between',
