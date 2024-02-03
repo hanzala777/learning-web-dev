@@ -7,7 +7,6 @@ function Appbar() {
     const navigate = useNavigate();
     const [username, setUsername] = useState(null);
 
-
     useEffect(() => {
         fetch('http://localhost:3000/admin/me', {
             method: 'GET',
@@ -48,6 +47,7 @@ function Appbar() {
                 }}>{username}</center>
                 <Button onClick={() => {
                     localStorage.setItem("token", null);
+                    window.location = '/'
                     alert("logged out!")
                 }}>Logout</Button>
             </div>

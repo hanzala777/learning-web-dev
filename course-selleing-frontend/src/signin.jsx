@@ -25,6 +25,7 @@ function Signin(){
             <Button variant="contained" style={{margin:10, marginTop:0}} onClick={() => {
                 function callback2(data) {
                     localStorage.setItem("token", data.token)
+                    window.location = '/'
                 }
                 function callback(res) {
                     res.json().then(callback2);
@@ -39,9 +40,6 @@ function Signin(){
                 }).then(callback)
             }}>sign in</Button>
             </div>
-            <Button onClick={() => {
-                navigate("../add");
-            }}>Add course</Button>
         </Card>
         </center>
     </div>
