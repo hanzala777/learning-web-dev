@@ -8,19 +8,23 @@ function Appbar() {
     const [username, setUsername] = useState(null);
 
     useEffect(() => {
+        function callback1(data){
+            if(data.username) {
+                setUsername(data.username)
+            }
+            console.log(data)
+        }
+
+        function callback(res){
+            res.json().then(callback1)
+        }
+
         fetch('http://localhost:3000/admin/me', {
             method: 'GET',
             headers: {
                 "Authorization": "Bearer "+ localStorage.getItem("token")
             }
-        }).then((res) => {
-            res.json().then((data) => {
-                if(data.username) {
-                    setUsername(data.username)
-                }
-                console.log(data)
-            })
-        })
+        }).then(callback)
     },[]);
 
     if(username) {
